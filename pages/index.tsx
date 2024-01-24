@@ -195,8 +195,7 @@ export default function Home() {
                 }
                 target="_blank"
               >
-                {job.Job_Opening_Name} - {job.Number_of_Positions} -{" "}
-                {job.Country}
+                {job.Job_Opening_Name} - {job.Country}
               </Link>
             ))}
           </div>

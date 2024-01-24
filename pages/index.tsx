@@ -182,6 +182,7 @@ export default function Home() {
             style={{
               display: "flex",
               flexDirection: "column",
+              alignItems: "flex-start",
               gap: "1rem",
             }}
           >

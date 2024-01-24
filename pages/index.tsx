@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export interface Job {
@@ -160,7 +161,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>
+        <div style={{ marginBottom: "1rem" }}>
           <button
             disabled={page <= 1}
             onClick={() => setPage((cur) => cur - 1)}
@@ -177,12 +178,26 @@ export default function Home() {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+            }}
+          >
             {jobs.map((job) => (
-              <div key={job.id}>
+              <Link
+                key={job.id}
+                href={
+                  job.Country?.toLowerCase().includes("outside")
+                    ? `https://careers.achievetestprep.com/jobs/Offshore/${job.id}`
+                    : `https://careers.achievetestprep.com/jobs/Careers-inside-USA/${job.id}`
+                }
+                target="_blank"
+              >
                 {job.Job_Opening_Name} - {job.Number_of_Positions} -{" "}
                 {job.Country}
-              </div>
+              </Link>
             ))}
           </div>
         )}
